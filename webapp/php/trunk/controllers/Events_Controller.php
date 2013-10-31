@@ -137,6 +137,10 @@ class Events_Controller {
 		 $count = 1 + $offset;
             }
             $result = $connection->query($query);
+			if (!isset($upcomingEvents))
+			{
+				$upcomingEvents = '';
+			}
             while($row = $result->getArray()) {
                 $rowsFound = true;
                 $title = $row['title'];

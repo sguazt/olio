@@ -69,7 +69,7 @@ if(!is_null($page)){
     $next_page = 2;
     $curr_page = 1;
     $offset = 0;
-    session_unregister ("currentpage");
+    unset($_SESSION["currentpage"]);
 }
 
 ob_start();

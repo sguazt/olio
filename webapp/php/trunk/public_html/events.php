@@ -88,6 +88,10 @@ if (isset($_SESSION["uname"])) {
                  "where socialeventid = '$se' limit 20";
 }
 $listqueryresult = $connection->query($listquery);
+if (!isset($attendeeList))
+{
+	$attendeeList = '';
+}
 while($listqueryresult->next()) {
         $tmp_uname = $listqueryresult->get(1);
         if (!isset($_SESSION["uname"]) && $tmp_uname == $username) {

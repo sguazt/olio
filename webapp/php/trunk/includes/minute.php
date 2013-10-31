@@ -30,9 +30,9 @@ $minutes = Array("00","01","02","03","04","05","06","07","08","09","10","11","12
        "33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49",
        "50","51","52","53","54","55","56","57","58","59");
 for ($i=1; $i<=60; $i++) {
-    if(!is_null($minute) && $i == $minute){
+    if(isset($minute) && $i == $minute){
         echo '<option selected="selected" value="'.$minute.'">'.$minute.'</option>';
-    }else if($i == $this_minute && is_null($minute)){
+    }else if($i == $this_minute && !isset($minute)){
       echo '<option selected="selected" value="'.$minutes[$i-1].'">'.$minutes[$i-1].'</option>';
     }else{
       echo '<option value="'.$minutes[$i-1].'">'.$minutes[$i-1].'</option>';

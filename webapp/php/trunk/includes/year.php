@@ -26,9 +26,9 @@
 $date = getDate();
 $this_year = $date["year"];
 for ($i=$this_year-5; $i<=$this_year+10; $i++) {
-    if(!is_null($year) && $i == $year){
+    if(isset($year) && $i == $year){
 	echo '<option selected="selected" value="'.$year.'">'.$year.'</option>';    
-    }else if($i == $this_year && is_null($year)){
+    }else if($i == $this_year && !isset($year)){
         echo '<option selected="selected" value="'.$i.'">'.$i.'</option>';
     }else{
     echo '<option value="'.$i.'">'.$i.'</option>';

@@ -21,23 +21,23 @@ require_once("../etc/config.php");
 $connection = DBConnection::getWriteInstance();
 
 // 1. Get data from submission page.
-$username=$_POST['add_user_name'];
-$pwd    =$_POST['psword'];
-$summary=$_POST['summary'];
-$fname=$_POST['first_name'];
-$lname=$_POST['last_name'];
-$email=$_POST['email'];
-$strt1= $_POST['street1'];
-$street2= $_POST['street2'];
-$cty  = $_POST['city'];
+$username=isset($_POST['add_user_name']) ? $_POST['add_user_name'] : NULL;
+$pwd    =isset($_POST['psword']) ? $_POST['psword'] : NULL;
+$summary=isset($_POST['summary']) ? $_POST['summary'] : NULL;
+$fname=isset($_POST['first_name']) ? $_POST['first_name'] : NULL;
+$lname=isset($_POST['last_name']) ? $_POST['last_name'] : NULL;
+$email=isset($_POST['email']) ? $_POST['email'] : NULL;
+$strt1= isset($_POST['street1']) ? $_POST['street1'] : NULL;
+$street2= isset($_POST['street2']) ? $_POST['street2'] : NULL;
+$cty  = isset($_POST['city']) ? $_POST['city'] : NULL;
 $street1=str_replace(" ","+",$strt1);
 $city = str_replace(" ","+",$cty);
-$state=$_POST['state'];
-$zip=$_POST['zip'];
-$country=$_POST['country'];
-$telephone=$_POST['telephone'];
-$timezone=$_POST['timezone'];
-$image_name= basename($_FILES['user_image']['name']);
+$state=isset($_POST['state']) ? $_POST['state'] : NULL;
+$zip=isset($_POST['zip']) ? $_POST['zip'] : NULL;
+$country=isset($_POST['country']) ? $_POST['country'] : NULL;
+$telephone=isset($_POST['telephone']) ? $_POST['telephone'] : NULL;
+$timezone=isset($_POST['timezone']) ? $_POST['timezone'] : NULL;
+$image_name= (isset($_FILES['user_image']) && isset($_FILES['user_image']['name'])) ? basename($_FILES['user_image']['name']) : '';
 
 // 2. Get coordinates of the address.
 $geocode = new Geocoder($street1, $city, $state, $zip);

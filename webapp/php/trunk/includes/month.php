@@ -27,9 +27,9 @@ $date = getDate();
 $this_month = $date["mon"];
 $months = Array("01","02","03","04","05","06","07","08","09","10","11","12");
 for ($i=1; $i<=12; $i++) {
-    if(!is_null($month) && $i == $month){
+    if(isset($month) && $i == $month){
         echo '<option selected="selected" value="'.$month.'">'.$month.'</option>';
-    }else if($i == $this_month && is_null($month)){
+    }else if($i == $this_month && !isset($month)){
       //echo '<option selected="selected" value="'.$i.'">'.$months[$i-1].'</option>';
       echo '<option selected="selected" value="'.$months[$i-1].'">'.$months[$i-1].'</option>';
     }else{

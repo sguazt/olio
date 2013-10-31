@@ -23,8 +23,8 @@
  */
 session_start();
 require_once("../etc/config.php");
-$se = $_REQUEST['id'];
-$username = $_SESSION["uname"];
+$se = isset($_REQUEST['id']) ? $_REQUEST['id'] : NULL;
+$username = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 $txBegun = false;
 if (!is_null($username)) {
     $connection = DBConnection::getWriteInstance();
@@ -49,6 +49,10 @@ $listquery = "select username from PERSON_SOCIALEVENT ".
              "where socialeventid = '$se' limit 20";
 $listqueryresult = $connection->query($listquery);
 $username = $_SESSION["uname"];
+if (!isset($attendeeList))
+{
+	$attendeeList = '';
+}
 while($listqueryresult->next()) {
         $tmp_uname = $listqueryresult->get(1);
         $attendeeList = $attendeeList." ".'<a href="users.php?username='.$tmp_uname.'">'.$tmp_uname.'</a><br />';
@@ -59,7 +63,7 @@ if ($txBegun) {
     $connection->commit();
 }
 
-$numofattendees = $_SESSION["numofattendees"] + 1;
+$numofattendees = (isset($_SESSION["numofattendees"]) ? $_SESSION["numofattendees"] : 0) + 1;
 $_SESSION["numofattendees"] = $numofattendees;
 echo '<h2 class="smaller_heading">'.$numofattendees.' Attendees:</h2><br/><input name="unattend" type="button" value="Unattend" onclick="deleteAttendee();"/><br/><div id="attendees">'.$attendeeList.'</div>';
 ?>

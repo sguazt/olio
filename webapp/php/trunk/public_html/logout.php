@@ -23,7 +23,10 @@
  *
  */ 
 session_start();
-session_unregister ("uname");
+if (isset($_SESSION["uname"]))
+{
+	unset($_SESSION["uname"]);
+}
 session_destroy();
 header("Location:index.php");
 ?>

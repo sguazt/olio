@@ -28,9 +28,9 @@ $this_hour = $date["hours"];
 $hours = Array("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15",
         "16","17","18","19","20","21","22","23","24");
 for ($i=1; $i<=24; $i++) {
-    if(!is_null($hour) && $i == $hour){
+    if(isset($hour) && $i == $hour){
         echo '<option selected="selected" value="'.$hour.'">'.$hour.'</option>';
-    }else if($i == $this_hour && is_null($hour) ){
+    }else if($i == $this_hour && !isset($hour) ){
       echo '<option selected="selected" value="'.$hours[$i-1].'">'.$hours[$i-1].'</option>';
     }else{
       echo '<option value="'.$hours[$i-1].'">'.$hours[$i-1].'</option>';

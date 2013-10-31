@@ -37,11 +37,11 @@
     <legend>Event Details</legend>
     <div id="basic_event_form">
       <p><label for="title">Title</label><br/>
-      <? echo '<input id="title" name="title" size="30" type="text" value="'.$title.'" /></p>'; ?>
+      <? echo '<input id="title" name="title" size="30" type="text" value="'.(isset($title) ? $title : '').'" /></p>'; ?>
       <p><label for="summary">Summary</label><br />
-      <? echo '<textarea cols="37" id="summary" name="summary" rows="20" >'.$summary.'</textarea></p>'; ?>
+      <? echo '<textarea cols="37" id="summary" name="summary" rows="20" >'.(isset($summary) ? $summary : '').'</textarea></p>'; ?>
       <p><label for="description">Description</label><br/>
-      <? echo '<textarea cols="37" id="description" name="description" rows="20" >'.$description.'</textarea></p>'; ?>
+      <? echo '<textarea cols="37" id="description" name="description" rows="20" >'.(isset($description) ? $description : '').'</textarea></p>'; ?>
     </div>
 
     <div id="misc_event_form">
@@ -77,7 +77,7 @@
 
       <p>
       <label for="telephone">Telephone</label><br/>
-      <? echo '<input id="telephone" name="telephone" size="30" type="text" value="'.$telephone.'" onblur="isValidTelephone();" />'; ?>
+      <? echo '<input id="telephone" name="telephone" size="30" type="text" value="'.(isset($telephone) ? $telephone : '').'" onblur="isValidTelephone();" />'; ?>
       <p id="isvalidtelephone"></p>
       </p>
   
@@ -96,7 +96,7 @@
       </p>
 
       <p><label for="tags">Tags</label><br/>
-      <? echo '<input id="tags" name="tags" size="40" type="text" value="'.$tags.'"/>'; ?>
+      <? echo '<input id="tags" name="tags" size="40" type="text" value="'.(isset($tags) ? $tags : '').'"/>'; ?>
       </p>
     </div>
 </fieldset>
@@ -104,27 +104,27 @@
 <fieldset id="address_form">
 <legend>Address</legend>
     <label for="street1">Street 1</label>
-    <? echo '<input id="street1" name="street1" size="30" type="text" value="'.$street1.'" /><br />'; ?>
+    <? echo '<input id="street1" name="street1" size="30" type="text" value="'.(isset($street1) ? $street1 : '').'" /><br />'; ?>
 
     <label for="street2">Street 2</label>
-    <? echo '<input id="street2" name="street2" size="30" type="text" value="'.$street2.'" /><br />'; ?>
+    <? echo '<input id="street2" name="street2" size="30" type="text" value="'.(isset($street2) ? $street2 : '').'" /><br />'; ?>
 
     <label for="zip">Zip</label>
-    <? echo '<input id="zip" name="zip" size="30" type="text" value="'.$zip.'" onblur="isValidZip();fillCityState();" /><br />'; ?>
+    <? echo '<input id="zip" name="zip" size="30" type="text" value="'.(isset($zip) ? $zip : '').'" onblur="isValidZip();fillCityState();" /><br />'; ?>
     <p id="isvalidzip"></p>
 
     <label for="city">City</label>
-    <? echo '<input id="city" name="city" size="30" type="text" value="'.$city.'" /><br />'; ?>
+    <? echo '<input id="city" name="city" size="30" type="text" value="'.(isset($city) ? $city : '').'" /><br />'; ?>
 
     <label for="state">State</label>
-    <? echo '<input id="state" name="state" size="30" type="text" value="'.$state.'" /><br />'; ?>
+    <? echo '<input id="state" name="state" size="30" type="text" value="'.(isset($state) ? $state : '').'" /><br />'; ?>
 
     <label for="country">Country</label>
     <select id="country" name="country">
     <?  
           readfile(Olio::$config['includes'] . "countries.html");
         if(!is_null($se)){
-          echo '<option selected="selected" value="'.$country.'">'.$country.'</option>';
+          echo '<option selected="selected" value="'.(isset($country) ? $country : '').'">'.(isset($country) ? $country : '').'</option>';
         }
     ?>
     </select><br />
