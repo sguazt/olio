@@ -39,6 +39,7 @@ $olioconfig['cacheSystem'] = 'MemCached';
 $olioconfig['cacheExpire'] = 7200; // Expiry time for memcache on set function in seconds
 
 $olioconfig['fileSystem'] = 'LocalFS';
+//$olioconfig['fileSystem'] = 'FakeLocalFS'; // Like 'LocalFS' but with smaller space requirements
 
 $olioconfig['localfsRoot'] = '/filestore';
 

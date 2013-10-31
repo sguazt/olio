@@ -50,6 +50,36 @@ $mimeTypes['odt'] = 'application/vnd.oasis.opendocument.text';
 $fileName = $_GET['file'];
 
 if ($fileName != "") {
+//	if (Olio::$config['fileSystem'] == "FakeLocalFS")
+//	{
+//		$fileName = strtolower($fileName);
+//		if (preg_match('/(.*?)([0-9]*)([0-9]{3})(.*)/', $fileName, $matches))
+//		{
+//			if ($matches[2] == '')
+//			{
+//				$matches[2] = 0;
+//			}
+//			if ($matches[1] == 'p')
+//			{
+//				$matches[2] = $matches[2]% 10; // for workload scale 102, 10(000) persons
+//			}
+//			elseif ($matches[1] == 'e')
+//			{
+//				$matches[2] = $matches[2]% 7; // and 7(000) events are available
+//			}
+//			if ($matches[2] == 0)
+//			{
+//				$matches[2] = '';
+//			}
+//			$matches[0] = '';
+//			$matches[3] = preg_replace('/^[0]+/','',$matches[3]);
+//			if ($matches[2] == '' && $matches[3] == '')
+//			{
+//				$matches[3] = '1000';
+//			}
+//			$fileName = implode($matches);
+//		}
+//	}
 	//$cacheFlag = $_GET['cache'];
 	$pathInfo = pathinfo($fileName);
 	$extension = $pathInfo['extension'];
