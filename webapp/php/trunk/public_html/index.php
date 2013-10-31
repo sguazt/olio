@@ -26,9 +26,9 @@
 session_start();
 require("../etc/config.php");
 
-$signedinuser = $_SESSION["uname"];
-$page= $_REQUEST['page'];
-$flag = $_REQUEST['flag'];
+$signedinuser = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
+$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : NULL;
+$flag = isset($_REQUEST['flag']) ? $_REQUEST['flag'] : NULL;
 
 $url = RequestUrl::getInstance();
 
@@ -44,11 +44,11 @@ if($href=="") {
 }
 
 if(!is_null($page)){
-    $eventdate=$_SESSION["eventdate"];
-    $zipcode=$_SESSION["zipcode"];
-    $order=$_SESSION["order"];
-    $numPages  =$_SESSION["numPages"];
-    $_SESSION["currentpage"]=$page;
+    $eventdate = isset($_SESSION["eventdate"]) ? $_SESSION["eventdate"] : NULL;
+    $zipcode = isset($_SESSION["zipcode"]) ? $_SESSION["zipcode"] : NULL;
+    $order = isset($_SESSION["order"]) ? $_SESSION["order"] : NULL;
+    $numPages = isset($_SESSION["numPages"]) ? $_SESSION["numPages"] : 0;
+    $_SESSION["currentpage"] = $page;
     $curr_page = $_SESSION["currentpage"];
     $prev_page = $_SESSION["currentpage"] - 1;
     $next_page = $_SESSION["currentpage"] + 1;
@@ -65,20 +65,18 @@ if(!is_null($page)){
     $cacheType = 0;
 } else {
     // error_log('$page is still null.',0);
-    $zipcode = $_REQUEST['zipcode'];
-    $order = $_REQUEST['order'];
-    $m= $_REQUEST['month'];
-    $d= $_REQUEST['day'];
-    $y= $_REQUEST['year'];
+    $zipcode = isset($_REQUEST['zipcode']) ? $_REQUEST['zipcode'] : NULL;
+    $order = isset($_REQUEST['order']) ? $_REQUEST['order'] : NULL;
+    $m = isset($_REQUEST['month']) ? $_REQUEST['month'] : NULL;
+    $d = isset($_REQUEST['day']) ? $_REQUEST['day'] : NULL;
+    $y = isset($_REQUEST['year']) ? $_REQUEST['year'] : NULL;
 
-    if(!is_null($_REQUEST['month']) && !is_null($_REQUEST['day'])  &&
-            !is_null($_REQUEST['year'])) {
+    if(!isset($_REQUEST['month']) && !isset($_REQUEST['day'])  && !isset($_REQUEST['year'])) {
         $eventdate= $y."-".$m."-".$d;
-    }    
-    if (is_null($zipcode) && is_null($order) &&
-            !isset($eventdate)) {
+    }
+    if (is_null($zipcode) && is_null($order) && !isset($eventdate)) {
         //if (is_null($signedinuser)) { // Get whole page if not logged in...
-        if($_SESSION["uname"] == ''){
+        if(!isset($_SESSION["uname"]) || $_SESSION["uname"] == ''){
             $cacheType = 2;
         } else { // And just the page content if logged in.
             $cacheType = 1;
@@ -100,7 +98,7 @@ if(!is_null($page)){
     $next_page = 2;
     $curr_page = 1;
     $offset = 0;
-    session_unregister ("currentpage");
+    unset($_SESSION["currentpage"]);
 }
 
 /*
