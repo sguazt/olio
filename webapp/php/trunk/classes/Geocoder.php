@@ -29,7 +29,7 @@ class Geocoder {
         $this->zip = $zip;
         $url = Olio::$config['geocoderURL'].'?appid=gsd5f&street='.
                 $this->street.'&city='.$this->city.
-                '&state='.$this->state.'&zip='.$this0->zip;
+                '&state='.$this->state.'&zip='.$this->zip;
         $stream = $this->curl_string($url);
         $xmlBegin= strpos($stream, '<?xml');
         if(!$xmlBegin)
