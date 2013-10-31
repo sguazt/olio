@@ -48,6 +48,8 @@ $olioconfig['memcachedHosts'] = array('MEMCACHED_HOST:11211'); // memcached host
 
 $olioconfig['geocoderURL'] = 'http://GEOCODER_HOST:8080/geocoder/geocode'; //Geocoder URL
 
+$olioconfig['proxy'] = '';
+
 class Olio {
     public static $config;
 }
