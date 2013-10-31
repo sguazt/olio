@@ -42,7 +42,7 @@ $minute = isset($_POST['minute']) ? $_POST['minute'] : NULL;
 $timezone = 'UTC';
 $eventtime=$year."-".$month."-".$day." ".$hour.":".$minute.":00";
 $eventdate=$year."-".$month."-".$day;
-$tags=$isset($_POST['tags']) ? _POST['tags'] : NULL;
+$tags=$isset($_POST['tags']) ? $_POST['tags'] : NULL;
 //echo "Tags = ".$tags."<br/>";
 
 $image_name= (isset($_FILES['upload_image']) && isset($_FILES['upload_image']['name'])) ? basename($_FILES['upload_image']['name']) : NULL;

@@ -24,7 +24,7 @@
  */    
 session_start();
 require_once("../etc/config.php");
-$username= $_REQUEST['username'];
+$username= isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 $connection = DBConnection::getInstance();
 $events = Events_Controller::getInstance();
 $friends = Users_Controller::getInstance();

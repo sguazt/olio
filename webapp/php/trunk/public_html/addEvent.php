@@ -24,7 +24,7 @@
 */
 session_start();
 require_once("../etc/config.php");
-$se = $_REQUEST['socialEventID'];
+$se = isset($_REQUEST['socialEventID']) ? $_REQUEST['socialEventID'] : NULL;
 $_SESSION["addEventSE"]=$se;
 $connection = DBConnection::getInstance();
 if(!is_null($se)){
