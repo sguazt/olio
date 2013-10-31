@@ -80,6 +80,7 @@ for($i=1;$i<=$numDaysInAMonth;$i++){
 }
 if($firstDay<7 && $firstDay>0){
 $nextMonthDay = 1;
+$fillTrailingSpaces = '';
 for($i=$firstDay; $i<7; $i++){
 $fillTrailingSpaces .='<td class="otherMonth">'.$nextMonthDay.'</td>';
 $nextMonthDay++;

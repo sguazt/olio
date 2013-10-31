@@ -23,10 +23,10 @@
  *
  */ 
     
-if(!is_null($_REQUEST['day']) ){
+if(isset($_REQUEST['day']) ){
   $month = $_REQUEST['month'];
   $this_year = $_REQUEST['year'];
-}else if(!is_null($_REQUEST['mon']) ){
+}else if(isset($_REQUEST['mon']) ){
   $month = $_REQUEST['mon'];
   if($month<10 && $month>0){
      $month = "0".$month;
@@ -35,8 +35,8 @@ if(!is_null($_REQUEST['day']) ){
 }else{
   $month = date("m");
   $this_year = date("Y");
-  session_unregister ("mon");
-  session_unregister ("yr");
+  unset($_SESSION["mon"]);
+  unset($_SESSION["yr"]);
 }
 
 // today
@@ -51,6 +51,7 @@ $year = date('Y',mktime(0,0,0,$month,1,$this_year));
 $firstDay = date('w',mktime(0,0,0,$month,1,$this_year));
 $numDaysInPrevMonth =  date('t',mktime(0,0,0,$month-1,1,$this_year));
 $prevMonthDay = $numDaysInPrevMonth-$firstDay+1;
+$fillWithSpaces = '';
 for($i=1; $i<=$firstDay; $i++){
 $fillWithSpaces .='<td class="otherMonth">'.$prevMonthDay.'</td>';
 $prevMonthDay++;

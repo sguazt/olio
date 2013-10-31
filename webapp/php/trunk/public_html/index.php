@@ -71,12 +71,12 @@ if(!is_null($page)){
     $d = isset($_REQUEST['day']) ? $_REQUEST['day'] : NULL;
     $y = isset($_REQUEST['year']) ? $_REQUEST['year'] : NULL;
 
-    if(!isset($_REQUEST['month']) && !isset($_REQUEST['day'])  && !isset($_REQUEST['year'])) {
+    if(isset($_REQUEST['month']) && isset($_REQUEST['day']) && isset($_REQUEST['year'])) {
         $eventdate= $y."-".$m."-".$d;
     }
     if (is_null($zipcode) && is_null($order) && !isset($eventdate)) {
         //if (is_null($signedinuser)) { // Get whole page if not logged in...
-        if(!isset($_SESSION["uname"]) || $_SESSION["uname"] == ''){
+        if(!isset($_SESSION["uname"])){
             $cacheType = 2;
         } else { // And just the page content if logged in.
             $cacheType = 1;

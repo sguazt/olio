@@ -38,7 +38,7 @@
           <a href="http://brazilian:8080/feedFromDB.php" id="rss_icon">
             <img alt="Rss-icon-large" src="/images/RSS-icon-large.gif" />
           </a>
-          <? if(is_null($_SESSION["uname"])){ ?>
+          <? if(!isset($_SESSION["uname"])){ ?>
           <div id="inline_login">
             <a name="login"></a>
             <? readfile(Olio::$config['includes'] . "login.html"); ?>
@@ -46,7 +46,7 @@
           <? } ?>
           <ul id="main_nav">
               <li ><a href="index.php" title="Home"><span>Home</span></a></li>  
-              <? if(!is_null($_SESSION["uname"])){ ?>
+              <? if(isset($_SESSION["uname"])){ ?>
               <li><a href="addEvent.php" title="Add Event"><span>Add Event</span></a></li>
               <li><a href="findUsers.php" title="Find Users"><span>Users</span></a></li>
               <li><a href="addPerson.php?username=<? echo $_SESSION["uname"];?>" title="Edit Profile"><span>Edit Profile</span></a></li>
@@ -81,7 +81,7 @@
 
 
           <div class="inside">
-              <? if(!is_null($_SESSION["uname"])){ ?>
+              <? if(isset($_SESSION["uname"])){ ?>
                         Hello, <strong><a href="users.php?username=<? echo $_SESSION["uname"];?>"><?=$_SESSION["uname"]?></a></strong>
                         <a href="logout.php"> (Logout)</a><br/>
               <? }else{ ?>
@@ -95,7 +95,7 @@
               </div>
               <hr />
               <div id="upcoming_subset">
-              <? if(!is_null($_SESSION["uname"])){
+              <? if(isset($_SESSION["uname"])){
                       require_once("yourUpcomingEvents.php");
               ?>
 		<div style="text-align: right; padding-right: 25px;">
@@ -103,7 +103,7 @@
     </div>
               <?}?>
               </div>
-              <? if(!is_null($_SESSION["uname"])){ ?>
+              <? if(isset($_SESSION["uname"])){ ?>
               <div id="requests_link">
               <a href="users.php?username=<? echo $_SESSION["uname"];?>#incoming_requests"><div id="rq">friendship requests (<?=$_SESSION["friendshipreqs"]?>)</div></a>
               </div>
