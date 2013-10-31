@@ -27,10 +27,10 @@ require_once("../etc/config.php");
 $connection = DBConnection::getInstance();
 $eventlist = Events_Controller::getInstance();
 $url = RequestUrl::getInstance();
-$tag=$_REQUEST['tag'];
-$page= $_REQUEST['page'];
+$tag=isset($_REQUEST['tag']) ? $_REQUEST['tag'] : NULL;
+$page= isset($_REQUEST['page']) ? $_REQUEST['page'] : NULL;
 $dateFormat = "l,  F j,  Y,  h:i A";
-$signedinuser=$_SESSION["uname"];
+$signedinuser=isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 
 $href = $url->getGetRequest();
 if(!is_null($page)){
@@ -38,7 +38,7 @@ if(!is_null($page)){
 }
 
 if(!is_null($page)){
-    $numPages  =$_SESSION["numPages"];
+    $numPages  = isset($_SESSION["numPages"]) ? $_SESSION["numPages"] : 0;
     $_SESSION["currentpage"]=$page;
     $curr_page = $_SESSION["currentpage"];
     $prev_page = $_SESSION["currentpage"] - 1;
@@ -54,7 +54,7 @@ if(!is_null($page)){
     $next_page = $numPages;
     }
 }else{
-    if(!is_null($_REQUEST['count'])){
+    if(isset($_REQUEST['count'])){
         $count=$_REQUEST['count'];
     }else{
         $query = "select refcount from SOCIALEVENTTAG where tag = '$tag'";
