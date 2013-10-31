@@ -63,7 +63,7 @@ class PDOResult implements DBResult {
     }
 
     function __destruct() {
-    	if (!cursorClosed)
+    	if (!$this->cursorClosed)
     	    $this->result->closeCursor();
     	unset($this->resultArray);
         unset($this->result);
