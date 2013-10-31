@@ -106,7 +106,7 @@ if(isset($_POST['addpersonsubmit'])) {
     $userid_query = "select userid from PERSON where username='$username'";
     $idres = $connection->query($userid_query);
     while ($idres->next()) {
-        $userid = $idres.get(1);
+        $userid = $idres->get(1);
     }
     unset($idres);
 }
