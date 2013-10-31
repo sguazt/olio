@@ -36,7 +36,6 @@ if ($_POST['submit'] == "Login") {
     $pwd=$_POST['password'];
     $result = $register->authenticate($un,$pwd,$connection);
     if ($result->next()) {
-          session_register("uname");
           $uname=$un;
           $sid=session_id();
           $_SESSION["uname"]=$uname;
