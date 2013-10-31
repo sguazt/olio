@@ -55,6 +55,7 @@ class Tags_Controller {
             $step = ($max_size - $min_size)/($spread);
 
             // loop through our tag array
+			$homePageTagCloud = '';
             foreach ($tags as $key => $value) {
                 $size = $min_size + (($value - $min_count) * $step);
                 // uncomment if you want sizes in whole %:
