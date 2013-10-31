@@ -22,30 +22,31 @@ require_once("../etc/config.php");
 $connection = DBConnection::getWriteInstance();
 
 // 1. Get data from submission page.
-$description=$_POST['description'];
-$summary = $_POST['summary'];
-$title=$_POST['title'];
-$strt1= $_POST['street1'];
-$street2= $_POST['street2'];
-$cty  = $_POST['city'];
+$description=isset($_POST['description']) ? $_POST['description'] : NULL;
+$summary = isset($_POST['summary']) ? $_POST['summary'] : NULL;
+$title=isset($_POST['title']) ? $_POST['title'] : NULL;
+$strt1= isset($_POST['street1']) ? $_POST['street1'] : NULL;
+$street2= isset($_POST['street2']) ? $_POST['street2'] : NULL;
+$cty  = isset($_POST['city']) ? $_POST['city'] : NULL;
 $street1 = str_replace(" ","+",$strt1);
 $city = str_replace(" ","+",$cty);
-$state = $_POST['state'];
-$zip = $_POST['zip'];
-$country = $_POST['country'];
-$telephone = $_POST['telephone'];
-$year = $_POST['year'];
-$month = $_POST['month'];
-$day = $_POST['day'];
-$hour = $_POST['hour'];
-$minute = $_POST['minute'];
+$state = isset($_POST['state']) ? $_POST['state'] : NULL;
+$zip = isset($_POST['zip']) ? $_POST['zip'] : NULL;
+$country = isset($_POST['country']) ? $_POST['country'] : NULL;
+$telephone = isset($_POST['telephone']) ? $_POST['telephone'] : NULL;
+$year = isset($_POST['year']) ? $_POST['year'] : NULL;
+$month = isset($_POST['month']) ? $_POST['month'] : NULL;
+$day = isset($_POST['day']) ? $_POST['day'] : NULL;
+$hour = isset($_POST['hour']) ? $_POST['hour'] : NULL;
+$minute = isset($_POST['minute']) ? $_POST['minute'] : NULL;
+$timezone = 'UTC';
 $eventtime=$year."-".$month."-".$day." ".$hour.":".$minute.":00";
 $eventdate=$year."-".$month."-".$day;
-$tags=$_POST['tags'];
+$tags=$isset($_POST['tags']) ? _POST['tags'] : NULL;
 //echo "Tags = ".$tags."<br/>";
 
-$image_name= basename($_FILES['upload_image']['name']);
-$literature_name=basename($_FILES['upload_literature']['name']);
+$image_name= (isset($_FILES['upload_image']) && isset($_FILES['upload_image']['name'])) ? basename($_FILES['upload_image']['name']) : NULL;
+$literature_name=(isset($_FILES['upload_literature']) && isset($_FILES['upload_literature']['name'])) ? basename($_FILES['upload_literature']['name']) : NULL;
 
 
 // 2. Get coordinates of the address.
@@ -66,8 +67,8 @@ while($idres->next()) {
 unset($idres);
 
 // 4. Insert event and get the event id.
-$usrnm = $_SESSION["uname"];
-$evid =  $_SESSION["addEventSE"];
+$usrnm = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
+$evid =  isset($_SESSION["addEventSE"]) ? $_SESSION["addEventSE"] : NULL;
 
 if (isset($_POST['addeventsubmit'])) {
 	$insertse = "insert into SOCIALEVENT (title, description,summary, submitterUserName, ADDRESS_addressid,telephone, timezone, eventtimestamp, eventdate) values ('$title', '$description','$summary', '$usrnm', '$addrid', '$telephone', '$timezone', '$eventtime', '$eventdate')";
