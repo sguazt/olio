@@ -36,12 +36,12 @@
 <legend>User Details</legend>
 <!--[form:users]-->
 <label for="add_user_name">Username</label>
-<? echo '<input id="add_user_name" name="add_user_name" type="text" value="'.$un.'" size="30" onblur="checkUser();"/>'; ?>
+<? echo '<input id="add_user_name" name="add_user_name" type="text" value="'.(isset($un) ? $un : '').'" size="30" onblur="checkUser();"/>'; ?>
 <p id="usercheck"></p>
 <br />
 
 <label for="password">Password</label>
-<? echo '<input id="psword" name="psword" size="30" type="password"  value="'.$pwd.'" />'; ?>
+<? echo '<input id="psword" name="psword" size="30" type="password"  value="'.(isset($pwd) ? $pwd : '').'" />'; ?>
 <br />
 
 <label for="passwordx">Confirm Password</label>
@@ -50,22 +50,22 @@
 <br />
 
 <label for="first_name">Firstname</label>
-<? echo '<input id="first_name" name="first_name" value="'.$fn.'" size="30" type="text"  />'; ?>
+<? echo '<input id="first_name" name="first_name" value="'.(isset($fn) ? $fn : '').'" size="30" type="text"  />'; ?>
 
 <br />
 
 <label for="last_name">Lastname</label>
-<? echo '<input id="last_name" name="last_name" value="'.$ln.'" size="30" type="text"  />'; ?>
+<? echo '<input id="last_name" name="last_name" value="'.(isset($ln) ? $ln : '').'" size="30" type="text"  />'; ?>
 
 <br />
 
 <label for="email">Email</label>
-<? echo '<input id="email" name="email" size="30" type="text" value="'.$email.'" onblur="isValidEmail();" />'; ?>
+<? echo '<input id="email" name="email" size="30" type="text" value="'.(isset($email) ? $email : '').'" onblur="isValidEmail();" />'; ?>
 <p id="isvalidemail"></p>
 <br />
 
 <label for="telephone">Telephone</label>
-<? echo '<input id="telephone" name="telephone" size="30" type="text" value="'.$tele.'" onblur="isValidTelephone();" />'; ?>
+<? echo '<input id="telephone" name="telephone" size="30" type="text" value="'.(isset($tele) ? $tele : '').'" onblur="isValidTelephone();" />'; ?>
 <p id="isvalidtelephone"></p>
 <br />
 
@@ -74,7 +74,7 @@
 <br />
 
 <label for="summary">Summary</label>
-<? echo '<textarea cols="40" id="summary" name="summary" rows="20" >'.$summary.'</textarea>'; ?>
+<? echo '<textarea cols="40" id="summary" name="summary" rows="20" >'.(isset($summary) ? $summary : '').'</textarea>'; ?>
 <br />
 
 <label for="timezone">Timezone</label>
@@ -82,7 +82,7 @@
 <? 
    readfile(Olio::$config['includes'] . "timezones.html"); 
    if(!is_null($uname)){
-	 echo '<option selected="selected" value="'.$tz.'">'.$tz.'</option>';
+	 echo '<option selected="selected" value="'.(isset($tz) ? $tz : '').'">'.(isset($tz) ? $tz : '').'</option>';
    }
   
 ?>
@@ -95,24 +95,24 @@
 <legend>Address</legend>
 <!--[form:address]-->
 <label for="street1">Street 1</label>
-<? echo '<input id="street1" name="street1" value="'.$street1.'" size="30" type="text"  />'; ?> 
+<? echo '<input id="street1" name="street1" value="'.(isset($street1) ? $street1 : '').'" size="30" type="text"  />'; ?> 
 <br />
 
 <label for="street2">Street 2</label>
-<? echo '<input id="street2" name="street2" value="'.$street2.'" size="30" type="text"  />'; ?>
+<? echo '<input id="street2" name="street2" value="'.(isset($street2) ? $street2 : '').'" size="30" type="text"  />'; ?>
 <br />
 
 <label for="zip">Zip</label>
-<? echo '<input id="zip" name="zip" size="30" type="text" value="'.$zip.'" onblur="isValidZip();fillCityState();" />'; ?>
+<? echo '<input id="zip" name="zip" size="30" type="text" value="'.(isset($zip) ? $zip : '').'" onblur="isValidZip();fillCityState();" />'; ?>
 <p id="isvalidzip"></p>
 <br />
 
 <label for="city">City</label>
-<? echo '<input id="city" name="city" value="'.$city.'" size="30" type="text"  />'; ?>
+<? echo '<input id="city" name="city" value="'.(isset($city) ? $city : '').'" size="30" type="text"  />'; ?>
 <br />
 
 <label for="state">State</label>
-<? echo '<input id="state" name="state" value="'.$state.'" size="30" type="text"  />'; ?>
+<? echo '<input id="state" name="state" value="'.(isset($state) ? $state : '').'" size="30" type="text"  />'; ?>
 <br />
 
 <label for="country">Country</label>
@@ -120,7 +120,7 @@
 <? 
   readfile(Olio::$config['includes'] . "countries.html");
 if(!is_null($uname)){
-  echo '<option selected="selected" value="'.$country.'">'.$country.'</option>';
+  echo '<option selected="selected" value="'.(isset($country) ? $country : '').'">'.(isset($country) ? $country : '').'</option>';
 }
 ?>
 </select>

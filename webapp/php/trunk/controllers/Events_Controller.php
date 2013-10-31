@@ -51,7 +51,7 @@ class Events_Controller {
     function getNumPages($zipcode,$eventdate,$connection){
             if(!is_null($eventdate)){
              $query = "select count(*) as count From SOCIALEVENT  where eventdate='$eventdate'";
-            }else if(!is_null($_REQUEST['zipcode']) ){
+            }else if(isset($_REQUEST['zipcode']) ){
             $query = "select count(*) as count From SOCIALEVENT as se,ADDRESS as a where se.eventtimestamp>=CURRENT_TIMESTAMP and se.ADDRESS_addressid=a.addressid and a.zip='$zipcode' ";
             }else{
             $query = "select count(*) as count From SOCIALEVENT where  eventtimestamp>=CURRENT_TIMESTAMP";
@@ -113,6 +113,10 @@ class Events_Controller {
               $count = 1 + $offset;
             }
             $result = $connection->query($query);
+			if (!isset($recentPostedEvents))
+			{
+				$recentPostedEvents = '';
+			}
             while($row = $result->getArray()) {
                 $rowsFound = true;
                 $title = $row['title'];

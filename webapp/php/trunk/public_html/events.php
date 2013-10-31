@@ -24,13 +24,13 @@
  */
 session_start();
 require_once("../etc/config.php");
-$se= $_REQUEST['socialEventID'];
-$comments = $_POST['comments'];
-$cid = $_POST['editingcid'];
-$editcomments = $_POST['editcomments'];
+$se= isset($_REQUEST['socialEventID']) ? $_REQUEST["socialEventID"] : NULL;
+$comments = isset($_POST['comments']) ? $_POST["comments"] : NULL;
+$cid = isset($_POST['editingcid']) ? $_POST["editingcid"] : NULL;
+$editcomments = isset($_POST['editcomments']) ? $_POST["editcomments"] : NULL;
 $tagslist = Tags_Controller::getInstance();
 $events = Events_Controller::getInstance();
-$username = $_SESSION["uname"];
+$username = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 $dateFormat = "l,  F j,  Y,  h:i A";
 $txBegun = false;
 if (isset($_POST['commentsratingsubmit']) ||
@@ -44,7 +44,7 @@ if (isset($_POST['commentsratingsubmit']) ||
 $eventTaglist = $tagslist->getEventsPageTagCloud($connection,$se);
 $numAttendees = $events->getNumAttendees($se,$connection);
 $_SESSION["numofattendees"] = $numAttendees;
-$rating = $_SESSION["rating"];
+$rating = isset($_SESSION["rating"]) ? $_SESSION["rating"] : NULL;
 $query = "select title,description,submitterUserName,imagethumburl," .
                  "literatureurl,telephone,timezone,eventtimestamp,street1," .
                  "street2,city,state,zip,country,latitude,longitude,summary " .

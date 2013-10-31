@@ -64,10 +64,10 @@
           <div class="rounded_corner top_left"><span></span></div>
           <div class="inside">
             <div id="messages">
-              <?=$fillMessage;?>
+              <?=isset($fillMessage) ? $fillMessage : '';?>
             </div>
             <div id="yield">
-              <?=$fillContent;?>          
+              <?=isset($fillContent) ? $fillContent : '';?>
             </div>
           </div>
 

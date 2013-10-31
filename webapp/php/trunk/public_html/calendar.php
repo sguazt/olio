@@ -51,7 +51,10 @@ $year = date('Y',mktime(0,0,0,$month,1,$this_year));
 $firstDay = date('w',mktime(0,0,0,$month,1,$this_year));
 $numDaysInPrevMonth =  date('t',mktime(0,0,0,$month-1,1,$this_year));
 $prevMonthDay = $numDaysInPrevMonth-$firstDay+1;
-$fillWithSpaces = '';
+if (!isset($fillWithSpaces))
+{
+	$fillWithSpaces = '';
+}
 for($i=1; $i<=$firstDay; $i++){
 $fillWithSpaces .='<td class="otherMonth">'.$prevMonthDay.'</td>';
 $prevMonthDay++;

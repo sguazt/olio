@@ -91,6 +91,10 @@ class Users_Controller {
         $rowsFound = false;
         $count = 0;
         $space = "&nbsp;";
+		if (!isset($friendCloud))
+		{
+			$friendCloud = '';
+		}
         while($row = $result->getArray()) {
 	    $count = $count + 1;
             $rowsFound = true;

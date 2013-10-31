@@ -93,7 +93,7 @@
     <div id="main_user_details">
         <h1 class="inline"><?=$username;?></h1>
             <? 
-	      if ($username == $_SESSION["uname"]) {
+	      if (isset($_SESSION["uname"]) && $username == $_SESSION["uname"]) {
               echo '(<a href="addPerson.php?username='.$username.'">Edit</a>)'; }
             ?>     
             <br />
@@ -128,7 +128,7 @@
   <p id="friendCloud"><?=$friendCloud;?></p>
   <p class="clr" />
 </div>
-<?if ($username == $_SESSION["uname"]) {?>
+<?if (isset($_SESSION["uname"]) && $username == $_SESSION["uname"]) {?>
 <a name="incoming_requests"></a>
 <div id="incoming">
 <fieldset id="incoming_requests">

@@ -28,7 +28,7 @@
 session_start();
 require_once("../etc/config.php");
 
-$uname = $_REQUEST['username'];
+$uname = isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 if(!is_null($uname)){
 $connection = DBConnection::getInstance();    
 $query = "SELECT username,password,firstname,lastname,email,telephone,imageurl,summary,timezone,street1,street2,city,state,zip,country FROM PERSON as p , ADDRESS as a where p.username='$uname' and p.ADDRESS_addressid = a.addressid ";
@@ -52,7 +52,7 @@ $country = $row['country'];
 unset($result);
 }
 
-if(!is_null($uname) && ( is_null($_SESSION["uname"]) || !($_SESSION["uname"]==$uname) ) ){
+if(!is_null($uname) && ( !isset($_SESSION["uname"]) || !($_SESSION["uname"]==$uname) ) ){
 $fillMessage = "<font color=red>Failed to edit user.</font>";
 }else{
 ob_start();
