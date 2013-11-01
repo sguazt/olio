@@ -81,7 +81,7 @@
 <select id="timezone" name="timezone">
 <? 
    readfile(Olio::$config['includes'] . "timezones.html"); 
-   if(!is_null($uname)){
+   if(isset($uname)){
 	 echo '<option selected="selected" value="'.(isset($tz) ? $tz : '').'">'.(isset($tz) ? $tz : '').'</option>';
    }
   
@@ -119,7 +119,7 @@
 <select id="country" name="country">
 <? 
   readfile(Olio::$config['includes'] . "countries.html");
-if(!is_null($uname)){
+if(isset($uname)){
   echo '<option selected="selected" value="'.(isset($country) ? $country : '').'">'.(isset($country) ? $country : '').'</option>';
 }
 ?>
@@ -128,7 +128,7 @@ if(!is_null($uname)){
 <!--[eoform:address]-->
 </fieldset>
 <?
-if(is_null($uname)){?>
+if(!isset($uname)){?>
 <input type="submit" value="Create" name="addpersonsubmit" />
 <?}else{?>
 <input type="submit" value="Update" name="addpersonsubmitupdate" />

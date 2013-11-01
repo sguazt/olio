@@ -24,11 +24,11 @@
  */      
 session_start();
 require_once("../etc/config.php");
-$username= $_REQUEST['username'];
+$username= isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 $connection = DBConnection::getInstance();
 $events = Events_Controller::getInstance();
 $url = RequestUrl::getInstance();
-$page= $_REQUEST['page'];
+$page= isset($_REQUEST['page']) ? $_REQUEST['page'] : 0;
 $flag = true;
 $href = $url->getGetRequest();
 if(!is_null($page)){
@@ -37,7 +37,7 @@ if(!is_null($page)){
 
 //Start Pagination
 if(!is_null($page)){
-    $numPages  =$_SESSION["numPages"];
+    $numPages  =isset($_SESSION["numPages"]) ? $_SESSION["numPages"] : 0;
     $_SESSION["currentpage"]=$page;
     $curr_page = $_SESSION["currentpage"];
     $prev_page = $_SESSION["currentpage"] - 1;

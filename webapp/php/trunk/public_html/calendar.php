@@ -24,14 +24,14 @@
  */ 
     
 if(isset($_REQUEST['day']) ){
-  $month = $_REQUEST['month'];
-  $this_year = $_REQUEST['year'];
+  $month = isset($_REQUEST['month']) ? $_REQUEST['month'] : NULL;
+  $this_year = isset($_REQUEST['year']) ? $_REQUEST['year'] : NULL;
 }else if(isset($_REQUEST['mon']) ){
   $month = $_REQUEST['mon'];
   if($month<10 && $month>0){
      $month = "0".$month;
   }  
-  $this_year = $_REQUEST['yr'];
+  $this_year = isset($_REQUEST['yr']) ? $_REQUEST['yr'] : NULL;
 }else{
   $month = date("m");
   $this_year = date("Y");

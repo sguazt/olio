@@ -24,9 +24,9 @@
  */
 session_start();
 require_once("../etc/config.php");
-$rating= $_REQUEST['rating'];
+$rating= isset($_REQUEST['rating']) ? $_REQUEST['rating'] : NULL;
 $_SESSION["rating"] = $rating;
-$cid= $_REQUEST['commentid'];
+$cid= isset($_REQUEST['commentid']) ? $_REQUEST['commentid'] : NULL;
 $divid = "editratingText".$cid;
 if(isset($cid)){
 echo $divid.","."Your rating is:".$rating;

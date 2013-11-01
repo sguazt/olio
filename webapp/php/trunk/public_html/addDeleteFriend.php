@@ -26,11 +26,11 @@ session_start();
 require_once("../etc/config.php");
 $connection = DBConnection::getWriteInstance();
 $friends = Users_Controller::getInstance();
-$person = $_REQUEST['person'];
-$friend = $_REQUEST['friend'];
-$frnd = $_REQUEST['frnd'];
-$user = $_REQUEST['query'];
-$flag = $_REQUEST['flag'];
+$person = isset($_REQUEST['person']) ? $_REQUEST['person'] : NULL;
+$friend = isset($_REQUEST['friend']) ? $_REQUEST['friend'] : NULL;
+$frnd = isset($_REQUEST['frnd']) ? $_REQUEST['frnd'] : NULL;
+$user = isset($_REQUEST['query']) ? $_REQUEST['query'] : NULL;
+$flag = isset($_REQUEST['flag']) ? $_REQUEST['flag'] : NULL;
 if ($flag == "add"){
 $sql = "insert into PERSON_PERSON (person_username,friends_username,is_accepted) values ('$friend','$person',0)";
 }else if ($flag == "delete"){

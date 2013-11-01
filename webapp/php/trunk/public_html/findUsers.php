@@ -26,10 +26,10 @@ session_start();
 require_once("../etc/config.php");
 $connection = DBConnection::getInstance();
 $isFriend = Users_Controller::getInstance();
-$user = $_REQUEST['query'];
-$reqUser = $_REQUEST['reqUser'];
-$flag = $_REQUEST['flag'];
-$loggedinuser = $_SESSION["uname"];
+$user = isset($_REQUEST['query']) ? $_REQUEST['query'] : NULL;
+$reqUser = isset($_REQUEST['reqUser']) ? $_REQUEST['reqUser'] : NULL;
+$flag = isset($_REQUEST['flag']) ? $_REQUEST['flag'] : NULL;
+$loggedinuser = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 if(!is_null($user) && !empty($user)){
 $users=$isFriend->findUser($user,$loggedinuser,$connection);
 }

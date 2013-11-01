@@ -22,7 +22,7 @@
  * Author: Sheetal Patil. Sun Microsystems, Inc.
  *
  */ 
-$param=$_REQUEST['param'];
+$param=isset($_REQUEST['param']) ? $_REQUEST['param'] : NULL;
 if($param == "95050"){ echo "Santa Clara,CA"; }
 else if($param == "95051"){ echo "Santa Clara,CA"; }
 else if($param == "95052"){ echo "Santa Clara,CA"; }

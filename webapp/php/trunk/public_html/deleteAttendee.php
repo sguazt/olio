@@ -25,8 +25,8 @@
     
 session_start();
 require_once("../etc/config.php");
-$se = $_REQUEST['id'];
-$username = $_SESSION["uname"];
+$se = isset($_REQUEST['id']) ? $_REQUEST['id'] : NULL;
+$username = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 if(!is_null($username)){
     $connection = DBConnection::getWriteInstance();
     $deleteuser = "delete from PERSON_SOCIALEVENT where username='$username' and socialeventid='$se'";
@@ -39,7 +39,7 @@ if (!isset($connection)) {
 }
 $listquery = "select username from PERSON_SOCIALEVENT where socialeventid = '$se'";
 $listqueryresult = $connection->query($listquery);
-$username = $_SESSION["uname"];
+$username = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 while($listqueryresult->next()) {
         $tmp_uname = $listqueryresult->get(1);
         $attendeeList = $attendeeList." ".'<a href="users.php?username='.$tmp_uname.'">'.$tmp_uname.'</a><br />';
@@ -51,7 +51,7 @@ if (!is_null($username)) {
     $connection->commit();
 }
 
-$numofattendees = $_SESSION["numofattendees"] - 1;
+$numofattendees = (isset($_SESSION["numofattendees"]) ? $_SESSION["numofattendees"] : 0) - 1;
 $_SESSION["numofattendees"] = $numofattendees;
 echo '<h2 class="smaller_heading">'.$numofattendees.' Attendees:</h2><br/><input name="attend" type="button" value="Attend" onclick="addAttendee();"/><br/><div id="attendees">'.$attendeeList.'</div>';
 ?>

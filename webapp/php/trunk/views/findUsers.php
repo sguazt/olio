@@ -27,7 +27,7 @@
 ?>
 <h1 id="search_header">Search Users</h1>
 <form action="findUsers.php" method="get" >
-<?if(!is_null($user) && !empty($user)){
+<?if(isset($user) && !empty($user)){
   echo '<input id="query" name="query" type="text" value="'.$user.'" />';
 }else{
 echo '<input id="query" name="query" type="text" />';

@@ -25,7 +25,7 @@
 session_start();
 require_once("../etc/config.php");
 $connection = DBConnection::getWriteInstance();
-$se = $_REQUEST['socialEventID'];
+$se = isset($_REQUEST['socialEventID']) ? $_REQUEST['socialEventID'] : NULL;
 $deleteEvent = "delete from SOCIALEVENT where socialeventid='$se'";
 $connection->exec($deleteEvent);
 header("Location:index.php");

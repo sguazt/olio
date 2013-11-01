@@ -48,7 +48,7 @@ $listquery = "select username from PERSON_SOCIALEVENT ".
              "union select username from PERSON_SOCIALEVENT ".
              "where socialeventid = '$se' limit 20";
 $listqueryresult = $connection->query($listquery);
-$username = $_SESSION["uname"];
+$username = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 if (!isset($attendeeList))
 {
 	$attendeeList = '';

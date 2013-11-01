@@ -26,7 +26,7 @@
 require_once("../etc/config.php");
 $conn = DBConnection::getInstance();
 
-$isUseravailable = $_REQUEST['user'];
+$isUseravailable = isset($_REQUEST['user']) ? $_REQUEST['user'] : NULL;
 $checkun = " select 'x' from PERSON where username='$isUseravailable' ";
 $res = $conn->query($checkun);
 if ($res->next()) {

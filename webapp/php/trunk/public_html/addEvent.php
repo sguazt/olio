@@ -60,7 +60,7 @@ if(!is_null($se)){
     }
     unset($result1);
 }
-if(!is_null($se) && (is_null($_SESSION["uname"]) || !($_SESSION["uname"]==$submitter) )){
+if(!is_null($se) && (!isset($_SESSION["uname"]) || !($_SESSION["uname"]==$submitter) )){
     $fillMessage = "<font color=red>You can only edit events you created.</font> ";
 }else{
     ob_start();

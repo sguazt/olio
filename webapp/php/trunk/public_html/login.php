@@ -31,9 +31,9 @@ require_once("../etc/config.php");
 $connection = DBConnection::getInstance();
 $register = Users_Controller::getInstance();
 
-if ($_POST['submit'] == "Login") {
-    $un=$_POST['user_name'];
-    $pwd=$_POST['password'];
+if (isset($_POST['submit']) && $_POST['submit'] == "Login") {
+    $un=isset($_POST['user_name']) ? $_POST['user_name'] : NULL;
+    $pwd=isset($_POST['password']) ? $_POST['password'] : NULL;
     $result = $register->authenticate($un,$pwd,$connection);
     if ($result->next()) {
           $uname=$un;

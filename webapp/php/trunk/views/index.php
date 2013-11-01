@@ -41,9 +41,9 @@
                   </div>
                   <div>
                     <h1 class="tight_heading">All Events</h1>
-                    <?if(is_null($zipcode) || is_null($order) ) {?>
+                    <?if(!isset($zipcode) || !isset($order) ) {?>
                     <h2 id="which_timezone" class="tight_heading">for all locations</h2>
-                    <?}else if(!is_null($zipcode)  && !is_null($order)){ ?>
+                    <?}else if(!isset($zipcode)  && !isset($order)){ ?>
                     <h2 id="which_timezone" class="tight_heading">for zipcode: <?=$zipcode?></h2>
 		    <?}?>
                   </div>

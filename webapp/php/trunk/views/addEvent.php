@@ -123,14 +123,14 @@
     <select id="country" name="country">
     <?  
           readfile(Olio::$config['includes'] . "countries.html");
-        if(!is_null($se)){
+        if(isset($se)){
           echo '<option selected="selected" value="'.(isset($country) ? $country : '').'">'.(isset($country) ? $country : '').'</option>';
         }
     ?>
     </select><br />
 </fieldset>
 <div class="clr"></div>
-<?if(is_null($se)){?>
+<?if(!isset($se)){?>
 <input type="submit" value="Create" name="addeventsubmit" />
 <?}else{?>
 <input type="submit" value="Update" name="addeventsubmitupdate"/>

@@ -25,15 +25,15 @@
 
 session_start();
 require_once("../etc/config.php");
-$user= $_REQUEST['username'];
-$reqUser = $_REQUEST['reqUser'];
-$flag = $_REQUEST['flag'];
+$user= isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
+$reqUser = isset($_REQUEST['reqUser']) ? $_REQUEST['reqUser'] : NULL;
+$flag = isset($_REQUEST['flag']) ? $_REQUEST['flag'] : NULL;
 $connection = DBConnection::getInstance();
 $friends = Users_Controller::getInstance();
-$loggedinuser = $_SESSION["uname"];
+$loggedinuser = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
 
 $url = RequestUrl::getInstance();
-$page= $_REQUEST['page'];
+$page= isset($_REQUEST['page']) ? $_REQUEST['page'] : NULL;
 $href = $url->getGetRequest();
 if(!is_null($page)){
   $href = substr($href, 0, strrpos($href,"&"));
@@ -41,7 +41,7 @@ if(!is_null($page)){
 
 //Start Pagination
 if(!is_null($page)){
-    $numPages  =$_SESSION["numPages"];
+    $numPages  =isset($_SESSION["numPages"]) ? $_SESSION["numPages"] : 0;
     $_SESSION["currentpage"]=$page;
     $curr_page = $_SESSION["currentpage"];
     $prev_page = $_SESSION["currentpage"] - 1;
