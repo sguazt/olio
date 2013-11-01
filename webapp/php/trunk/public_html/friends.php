@@ -23,7 +23,10 @@
  *
  */      
 
-session_start();
+if (!isset($_SESSION))
+{
+	session_start();
+}
 require_once("../etc/config.php");
 $user= isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 $reqUser = isset($_REQUEST['reqUser']) ? $_REQUEST['reqUser'] : NULL;

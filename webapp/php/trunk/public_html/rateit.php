@@ -22,7 +22,10 @@
  * Author: Sheetal Patil. Sun Microsystems, Inc.
  *
  */
-session_start();
+if (!isset($_SESSION))
+{
+	session_start();
+}
 require_once("../etc/config.php");
 $rating= isset($_REQUEST['rating']) ? $_REQUEST['rating'] : NULL;
 $_SESSION["rating"] = $rating;

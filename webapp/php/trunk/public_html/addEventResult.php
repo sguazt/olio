@@ -17,7 +17,10 @@
  * limitations under the License.
  */ 
     
-session_start();    
+if (!isset($_SESSION))
+{
+	session_start();
+}
 require_once("../etc/config.php");
 $connection = DBConnection::getWriteInstance();
 

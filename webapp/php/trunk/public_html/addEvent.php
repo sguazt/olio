@@ -22,7 +22,10 @@
  * Author: Sheetal Patil. Sun Microsystems, Inc.
  *
 */
-session_start();
+if (!isset($_SESSION))
+{
+	session_start();
+}
 require_once("../etc/config.php");
 $se = isset($_REQUEST['socialEventID']) ? $_REQUEST['socialEventID'] : NULL;
 $_SESSION["addEventSE"]=$se;

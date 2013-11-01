@@ -25,7 +25,10 @@
  * Once the user submits the page, user gets registered and will be directed to userAdded.php page.
  *
 */
-session_start();
+if (!isset($_SESSION))
+{
+	session_start();
+}
 require_once("../etc/config.php");
 
 $uname = isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;

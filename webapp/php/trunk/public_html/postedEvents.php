@@ -22,7 +22,10 @@
  * Author: Sheetal Patil. Sun Microsystems, Inc.
  *
  */      
-session_start();
+if (!isset($_SESSION))
+{
+	session_start();
+}
 require_once("../etc/config.php");
 $username= isset($_REQUEST['username']) ? $_REQUEST['username'] : NULL;
 $connection = DBConnection::getInstance();

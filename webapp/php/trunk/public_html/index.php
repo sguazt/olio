@@ -23,7 +23,10 @@
  * 
  */
 
-session_start();
+if (!isset($_SESSION))
+{
+	session_start();
+}
 require("../etc/config.php");
 
 $signedinuser = isset($_SESSION["uname"]) ? $_SESSION["uname"] : NULL;
