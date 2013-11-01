@@ -40,8 +40,8 @@ $day = isset($_POST['day']) ? $_POST['day'] : NULL;
 $hour = isset($_POST['hour']) ? $_POST['hour'] : NULL;
 $minute = isset($_POST['minute']) ? $_POST['minute'] : NULL;
 $timezone = 'UTC';
-$eventtime=$year."-".$month."-".$day." ".$hour.":".$minute.":00";
-$eventdate=$year."-".$month."-".$day;
+$eventtime=sprintf("%04d",$year)."-".sprintf("%02d",$month)."-".sprintf("%02d",$day)." ".sprintf("%02d",$hour).":".sprintf("%02d",$minute).":00";
+$eventdate=sprintf("%04d",$year)."-".sprintf("%02d",$month)."-".sprintf("%02d",$day);
 $tags=isset($_POST['tags']) ? $_POST['tags'] : NULL;
 //echo "Tags = ".$tags."<br/>";
 
