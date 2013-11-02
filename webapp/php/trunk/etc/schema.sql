@@ -26,8 +26,8 @@ create table PERSON(
    telephone VARCHAR(25) NOT NULL,
    imageurl VARCHAR(100) NOT NULL,
    imagethumburl VARCHAR(100) NOT NULL,
-   summary VARCHAR(2500) NOT NULL,
-   timezone VARCHAR(25) NOT NULL,
+   summary TEXT NOT NULL,
+   timezone VARCHAR(100) NOT NULL,
    ADDRESS_addressid INTEGER NOT NULL,
    primary key (userid)
 ) ENGINE=InnoDB;
@@ -73,7 +73,7 @@ CREATE TABLE ID_GEN (
 CREATE TABLE SOCIALEVENT (
    socialeventid INTEGER NOT NULL AUTO_INCREMENT,
    title VARCHAR(100) NOT NULL,
-   description VARCHAR(500) NOT NULL,
+   description TEXT NOT NULL,
    submitterUserName VARCHAR(25) NOT NULL,
    ADDRESS_addressid INTEGER NOT NULL,
    totalscore INTEGER NOT NULL,
@@ -121,7 +121,7 @@ create table COMMENTS_RATING(
    commentid INTEGER NOT NULL AUTO_INCREMENT,
    username VARCHAR(25) NOT NULL,
    socialeventid INTEGER NOT NULL,
-   comments VARCHAR(2500) NOT NULL,
+   comments TEXT NOT NULL,
    ratings INTEGER NOT NULL,
    created_at TIMESTAMP NOT NULL,
    updated_at TIMESTAMP,

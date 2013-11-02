@@ -55,7 +55,7 @@ CREATE TABLE `documents` (
 CREATE TABLE `events` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(100) default NULL,
-  `description` varchar(500) default NULL,
+  `description` TEXT default NULL,
   `telephone` varchar(20) default NULL,
   `user_id` int(11) default NULL,
   `address_id` int(11) default NULL,
@@ -151,7 +151,7 @@ CREATE TABLE `users` (
   `lastname` varchar(25) default NULL,
   `email` varchar(90) default NULL,
   `telephone` varchar(25) default NULL,
-  `summary` varchar(2500) default NULL,
+  `summary` TEXT default NULL,
   `timezone` varchar(100) default NULL,
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
