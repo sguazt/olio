@@ -32,7 +32,7 @@ class FakeLocalFS extends LocalFS {
 
 	function getFullPath($filename, $attrs = null)
 	{
-		return parent::getFullPath(makeFakeFileName($fileName));
+		return parent::getFullPath($this->makeFakeFileName($fileName));
 	}
 
 	protected function makeFakeFileName($fileName)
